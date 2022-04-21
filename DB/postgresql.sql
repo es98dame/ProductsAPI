@@ -21,7 +21,10 @@ CREATE TABLE features (
  id SERIAL PRIMARY KEY NOT NULL,
  product_id INTEGER NOT NULL,
  feature VARCHAR(50) NOT NULL,
- value VARCHAR(50)
+ value VARCHAR(50),
+ CONSTRAINT fk_product
+      FOREIGN KEY(product_id)
+	  REFERENCES products(id)
 );
 
 CREATE TABLE styles (
@@ -30,26 +33,36 @@ CREATE TABLE styles (
  name VARCHAR(50),
  sale_price decimal(12,2) DEFAULT 0,
  original_price decimal(12,2) NOT NULL,
- default_style BOOLEAN NOT NULL
+ default_style BOOLEAN NOT NULL,
+ CONSTRAINT fk_product
+      FOREIGN KEY(product_id)
+	  REFERENCES products(id)
 );
 
 CREATE TABLE photos (
  id SERIAL PRIMARY KEY,
  style_id INTEGER,
  url TEXT,
- thumbnail_url TEXT
+ thumbnail_url TEXT,
+ CONSTRAINT fk_styles
+      FOREIGN KEY(style_id)
+	  REFERENCES styles(id)
 );
 
 CREATE TABLE skus (
  id SERIAL PRIMARY KEY NOT NULL,
  style_id INTEGER,
  size VARCHAR(50) NOT NULL,
- quantity INTEGER NOT NULL
+ quantity INTEGER NOT NULL,
+ CONSTRAINT fk_styles
+      FOREIGN KEY(style_id)
+	  REFERENCES styles(id)
 );
 
-
+-- ELT ---
 \copy products FROM 'SDC-Overview/Data/product.csv' csv header;
 \copy features FROM 'SDC-Overview/Data/features.csv' csv header;
 \copy styles FROM 'SDC-Overview/Data/styles.csv' NULL AS 'null' csv header;
+UPDATE styles SET sale_price = 0 WHERE sale_price IS NULL;
 \copy photos FROM 'SDC-Overview/Data/photos.csv' csv header;
 \copy skus FROM 'SDC-Overview/Data/skus.csv' csv header;
