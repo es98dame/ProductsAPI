@@ -63,6 +63,7 @@ CREATE TABLE skus (
 \copy products FROM 'SDC-Overview/Data/product.csv' csv header;
 \copy features FROM 'SDC-Overview/Data/features.csv' csv header;
 \copy styles FROM 'SDC-Overview/Data/styles.csv' NULL AS 'null' csv header;
-UPDATE styles SET sale_price = 0 WHERE sale_price IS NULL;
 \copy photos FROM 'SDC-Overview/Data/photos.csv' csv header;
 \copy skus FROM 'SDC-Overview/Data/skus.csv' csv header;
+
+UPDATE styles SET sale_price = 0 WHERE sale_price IS NULL;
