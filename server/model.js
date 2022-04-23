@@ -1,12 +1,13 @@
 // DB Connection here
 const { Pool } = require('pg');
+const config = require('../config.js');
 
 const pool = new Pool({
-  host: 'localhost',
-  user: 'postgres',
-  database: 'atelier',
-  password: 'PoopPoop7733',
-  port: 5432,
+  host: config.DATABASE_HOST,
+  user: config.DATABASE_USERNAME,
+  database: config.DATABASE_NAME,
+  password: config.DATABASE_PASSWORD,
+  port: config.PORT,
 });
 
 pool.connect((err, client, release) => {
@@ -54,7 +55,7 @@ module.exports = {
       'name', s.name,
       'original_price', s.original_price,
       'sale_price', s.sale_price,
-      'default', s.default_style,
+      'default?', s.default_style,
 	  'photos', (SELECT json_agg(
 		  json_build_object(
 		  'thumbnail_url', p.thumbnail_url,
@@ -69,8 +70,8 @@ module.exports = {
 	   				)
 			  )
 			FROM skus as sk WHERE sk.style_id = s.id)
-  ) ORDER BY s.id) AS results FROM styles as s WHERE s.product_id = 1)
-    FROM styles as s WHERE s.product_id = 1`, (err, data) => {
+  ) ORDER BY s.id) AS results FROM styles as s WHERE s.product_id = ${id})
+    FROM styles as s WHERE s.product_id = ${id}`, (err, data) => {
       if (err) {
         // console.log('err in model.js');
         callback(err);

@@ -1,0 +1,16 @@
+atelier=# EXPLAIN ANALYZE SELECT p.*, json_agg(json_build_object('feature', f.feature,'value', f.value )) AS features
+FROM products as p JOIN features as f ON f.product_id = p.id WHERE p.id = 1 GROUP BY p.id;
+
+                                                                   QUERY PLAN
+-------------------------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=0.85..16.99 rows=1 width=308) (actual time=0.143..0.144 rows=1 loops=1)
+   Group Key: p.id
+   ->  Nested Loop  (cost=0.85..16.96 rows=3 width=296) (actual time=0.075..0.079 rows=2 loops=1)
+         ->  Index Scan using products_pkey on products p  (cost=0.42..8.44 rows=1 width=276) (actual time=0.028..0.028 rows=1 loops=1)
+               Index Cond: (id = 1)
+         ->  Index Scan using features_product_id_idx on features f  (cost=0.43..8.48 rows=3 width=24) (actual time=0.045..0.046 rows=2 loops=1)
+               Index Cond: (product_id = 1)
+ Planning Time: 0.991 ms
+ Execution Time: 0.262 ms
+(9 rows)
+

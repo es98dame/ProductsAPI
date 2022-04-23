@@ -1,0 +1,21 @@
+                                                                      QUERY PLAN                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using styles_product_id_idx on styles s  (cost=64.12..68.18 rows=3 width=36) (actual time=0.611..0.613 rows=6 loops=1)
+   Index Cond: (product_id = 1)
+   Heap Fetches: 0
+   InitPlan 3 (returns $2)
+     ->  Aggregate  (cost=63.69..63.70 rows=1 width=32) (actual time=0.496..0.497 rows=1 loops=1)
+           ->  Index Scan using styles_product_id_idx on styles s_1  (cost=0.43..11.10 rows=3 width=18) (actual time=0.014..0.021 rows=6 loops=1)
+                 Index Cond: (product_id = 1)
+           SubPlan 1
+             ->  Aggregate  (cost=8.77..8.78 rows=1 width=32) (actual time=0.030..0.030 rows=1 loops=6)
+                   ->  Index Scan using photos_style_id_idx on photos p  (cost=0.43..8.70 rows=15 width=255) (actual time=0.012..0.017 rows=6 loops=6)
+                         Index Cond: (style_id = s_1.id)
+           SubPlan 2
+             ->  Aggregate  (cost=8.73..8.74 rows=1 width=32) (actual time=0.026..0.026 rows=1 loops=6)
+                   ->  Index Scan using skus_style_id_idx on skus sk  (cost=0.43..8.66 rows=13 width=11) (actual time=0.013..0.014 rows=6 loops=6)
+                         Index Cond: (style_id = s_1.id)
+ Planning Time: 0.549 ms
+ Execution Time: 0.725 ms
+(17 rows)
+

@@ -1,7 +1,10 @@
 // app, controllers, model
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
+
 const controller = require('./controllers');
 
 const PORT = process.env.PORT || 3000;
