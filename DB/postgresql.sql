@@ -60,10 +60,10 @@ CREATE TABLE skus (
 );
 
 -- ELT ---
-\copy products FROM 'SDC-Overview/Data/product.csv' csv header;
-\copy features FROM 'SDC-Overview/Data/features.csv' csv header;
-\copy styles FROM 'SDC-Overview/Data/styles.csv' NULL AS 'null' csv header;
-\copy photos FROM 'SDC-Overview/Data/photos.csv' csv header;
-\copy skus FROM 'SDC-Overview/Data/skus.csv' csv header;
+\copy products FROM './Data/product.csv' csv header;
+\copy features FROM './Data/features.csv' csv header;
+\copy styles FROM './Data/styles.csv' NULL AS 'null' csv header;
+\copy photos FROM './Data/photos.csv' csv header;
+\copy skus FROM './Data/skus.csv' csv header;
 
 UPDATE styles SET sale_price = 0 WHERE sale_price IS NULL;
