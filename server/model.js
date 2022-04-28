@@ -1,13 +1,12 @@
 // DB Connection here
 const { Pool } = require('pg');
-const config = require('../config.js');
 
 const pool = new Pool({
-  host: config.DATABASE_HOST,
-  user: config.DATABASE_USERNAME,
-  database: config.DATABASE_NAME,
-  password: config.DATABASE_PASSWORD,
-  port: config.PORT,
+  host: DB_HOST,
+  user: DB_USERNAME,
+  database: DB_NAME,
+  password: DB_PASSWORD,
+  port: DB_PORT,
 });
 
 pool.connect((err, client, release) => {

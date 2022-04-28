@@ -3,3 +3,4 @@ Data/
 .eslintrc.js
 .env
 config.js
+model_local
