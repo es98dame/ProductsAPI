@@ -50,28 +50,29 @@ module.exports = {
   getStyles: (id, callback) => {
     pool.query(`
     SELECT s.product_id,
-(SELECT json_agg(json_build_object(
-      'style_id', s.id,
-      'name', s.name,
-      'original_price', s.original_price,
-      'sale_price', s.sale_price,
-      'default?', s.default_style,
-	  'photos', (SELECT json_agg(
-		  json_build_object(
-		  'thumbnail_url', p.thumbnail_url,
-		  'url', p.url
-	  		)
-		)
-		FROM photos as p WHERE p.style_id = s.id),
-	   'skus', (SELECT json_object_agg(
-	   			sk.id, json_build_object(
-		   			'quantity', sk.quantity,
-		  			 'size', sk.size
-	   				)
-			  )
-			FROM skus as sk WHERE sk.style_id = s.id)
-  ) ORDER BY s.id) AS results FROM styles as s WHERE s.product_id = ${id})
-    FROM styles as s WHERE s.product_id = ${id}`, (err, data) => {
+    (SELECT coalesce(json_agg(json_build_object(
+          'style_id', s.id,
+          'name', s.name,
+          'original_price', s.original_price,
+          'sale_price', s.sale_price,
+          'default?', s.default_style,
+        'photos', (SELECT coalesce(json_agg(
+          json_build_object(
+          'thumbnail_url', p.thumbnail_url,
+          'url', p.url
+            )
+        ) ,'[]')
+        FROM photos as p WHERE p.style_id = s.id),
+         'skus', (SELECT coalesce(json_object_agg(
+               sk.id, json_build_object(
+                 'quantity', sk.quantity,
+                 'size', sk.size
+                 )
+            ), '{}')
+          FROM skus as sk WHERE sk.style_id = s.id)
+      ) ORDER BY s.id),'{}') AS results FROM styles as s WHERE s.product_id = ${id})
+
+        FROM styles as s WHERE s.product_id = ${id}`, (err, data) => {
       if (err) {
         // console.log('err in model.js');
         callback(err);
