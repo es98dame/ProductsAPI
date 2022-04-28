@@ -4,3 +4,4 @@ Data/
 .env
 config.js
 model_local
+newrelic.js
