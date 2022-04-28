@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //loader.io
-app.get('/loaderio-b0a47902a09e868b2612c64501de692b/' (req, res) => {
-  res.send('loaderio-b0a47902a09e868b2612c64501de692b')
-})
+app.get('/loaderio-b0a47902a09e868b2612c64501de692b/', (req, res) => {
+  res.send('loaderio-b0a47902a09e868b2612c64501de692b');
+});
 
 // ------------------------------------Overview
 // ------------------------------------Routes API URL
