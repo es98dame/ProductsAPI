@@ -60,10 +60,9 @@ CREATE TABLE skus (
 );
 
 -- ELT ---
-\copy products FROM './Data/product.csv' csv header;
-\copy features FROM './Data/features.csv' csv header;
-\copy styles FROM './Data/styles.csv' NULL AS 'null' csv header;
-\copy photos FROM './Data/photos.csv' csv header;
-\copy skus FROM './Data/skus.csv' csv header;
-
-UPDATE styles SET sale_price = 0 WHERE sale_price IS NULL;
+-- Import data if have .csv files.
+-- \copy products FROM './Data/product.csv' csv header;
+-- \copy features FROM './Data/features.csv' csv header;
+-- \copy styles FROM './Data/styles.csv' NULL AS 'null' csv header;
+-- \copy photos FROM './Data/photos.csv' csv header;
+-- \copy skus FROM './Data/skus.csv' csv header;

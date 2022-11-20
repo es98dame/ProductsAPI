@@ -1,4 +1,6 @@
 // app, controllers, model
+// new Relice
+var nr = require('newrelic');
 const express = require('express');
 const cors = require('cors');
 
@@ -9,7 +11,6 @@ const controller = require('./controllers');
 
 const PORT = process.env.PORT || 3000;
 
-// app.use(express.static('client/dist')); //make sure !!
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

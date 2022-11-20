@@ -8,9 +8,6 @@ const pool = new Pool({
   database: config.DATABASE_NAME,
   password: config.DATABASE_PASSWORD,
   port: config.PORT,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
 });
 
 pool.connect((err, client, release) => {
