@@ -1,5 +1,4 @@
 # SDC-Overview
-<<<<<<< HEAD
 
 =======
 ## This is System Design Capstone for products micoro service.
@@ -14,4 +13,3 @@ Table of Contents:
 1. Database
 2. Server
 3. Testing
->>>>>>> cd9559732455ad60165aa99d95ddc3833008ff50
