@@ -3,10 +3,9 @@ const model = require('./model');
 module.exports = {
   getProducts: (req, res) => {
     // URL has '?page=${page}&count=${count}'
-    const { page } = req.query;
-    const { count } = req.query;
-    // console.log('page',page);
-    // console.log('count', count);
+    const page = req.query.page ? req.query.page : 1;
+    const count = req.query.count ? req.query.count : 20;
+
     model.getProducts(page, count, (err, data) => {
       if (err) {
         res.status(500).send(err);

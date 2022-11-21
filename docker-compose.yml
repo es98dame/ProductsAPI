@@ -19,7 +19,7 @@ services:
     ports:
       - "35432:5432"
     environment:
-      POSTGRES_USER: user
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: db
     volumes:
