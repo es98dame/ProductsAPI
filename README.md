@@ -1,4 +1,4 @@
-# Produts API
+# Products API
 It is to build the backend system and APIs for products microservice for an e-commerce web app. It responds to several RESTful endpoints and has been optimized to handle web-scale traffic. Also, It supports building local and remote databases and provides schemas for both MongoDB and Postgres. 
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -39,6 +39,9 @@ npm start
 ```
 npm test
 ```
+
+[(Back to top)](#products-api)
+
 
 ## Database
 ### ER Diagram
@@ -86,6 +89,8 @@ SELECT p.*, json_agg(json_build_object(
   ```
   <img src="https://user-images.githubusercontent.com/25275753/202880552-d4b66d03-650b-4d46-921d-2721462fd4da.png"  width="500" height="400"/>
   
+[(Back to top)](#products-api)
+
  
 ## API Endpoint
 ### `GET /products`
@@ -227,6 +232,10 @@ Returns the all styles available for the given product.
     ]
 }
 ```
+
+[(Back to top)](#products-api)
+
+
 
 ## Docker
 
