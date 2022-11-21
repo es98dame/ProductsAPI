@@ -13,13 +13,14 @@ Table of Contents:
 - [Database](#database)
 - [API Endpoint](#api-endpoint)
 - [Docker](#docker)
+
 ## Get started
 The database schema are contained in `/DB`
 The node server is contained entirely in `/server` and enters on `index.js`
 `npm test` runs the tests inside of the `/Test` folder with k6
 
 #### Install
-For local database setup, check it out. - [DB setup](https://github.com/)
+For local database setup, check it out. - [DB setup](https://github.com/es98dame/ProductsAPI/blob/main/DB/REAMD.md)
 
 ```
 npm install
