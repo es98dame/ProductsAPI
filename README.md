@@ -19,7 +19,7 @@ The node server is contained entirely in `/server` and enters on `index.js`
 `npm test` runs the tests inside of the `/Test` folder with k6
 
 #### Install
-Ensure the database is prepared - [ETL](https://github.com/yoshi-sdc/atelier-products/blob/f11541e809aee0693ea8338361b2b97e467098d0/etl/README.md)
+For local database setup, check it out. - [DB setup](https://github.com/)
 
 ```
 npm install
@@ -227,7 +227,8 @@ Returns the all styles available for the given product.
 }
 ```
 
-##Docker
+## Docker
+
 If want change this params in `docker-compose.yaml`
 | Parameter | Description |
 | ------ | ------ |
