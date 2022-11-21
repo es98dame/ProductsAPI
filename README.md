@@ -1,7 +1,5 @@
 # SDC-Overview
-<<<<<<< HEAD
 
-=======
 ## This is System Design Capstone for products micoro service.
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white "NodeJS")
@@ -14,4 +12,3 @@ Table of Contents:
 1. Database
 2. Server
 3. Testing
->>>>>>> cd9559732455ad60165aa99d95ddc3833008ff50
