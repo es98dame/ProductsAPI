@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "k6 run Test/k6StressTest.js",
     "start": "node server/index.js",
     "lint": "./node_modules/.bin/eslint"
   },
@@ -23,7 +23,8 @@
     "express": "^4.17.3",
     "newrelic": "^8.10.0",
     "pg": "^8.7.3",
-    "postgres": "^3.0.6"
+    "postgres": "^3.0.6",
+    "dotenv": "^16.0.0"
   },
   "devDependencies": {
     "eslint": "^8.13.0",

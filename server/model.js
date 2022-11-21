@@ -1,13 +1,13 @@
 // DB Connection here
 const { Pool } = require('pg');
-const config = require('../config.js');
+require('dotenv').config();
 
 const pool = new Pool({
-  host: config.DATABASE_HOST,
-  user: config.DATABASE_USERNAME,
-  database: config.DATABASE_NAME,
-  password: config.DATABASE_PASSWORD,
-  port: config.PORT,
+  host: process.env.HOST || 'localhost',
+  user: process.env.POSTGRES_USER || 'postgres',
+  database: process.env.POSTGRES_DB || 'atelier',
+  password: process.env.POSTGRES_PASSWORD || 'postgres',
+  port: process.env.DB_PORT || 5432
 });
 
 pool.connect((err, client, release) => {
